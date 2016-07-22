@@ -1,0 +1,21 @@
+(page "index.html")
+
+(defc show? true)
+
+(html
+  (head
+    (link :href "app.css" :rel "stylesheet")
+    (script (str "!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+\"://platform.twitter.com/widgets.js\";fjs.parentNode.insertBefore(js,fjs);}}(document,\"script\",\"twitter-wjs\");")))
+  (body
+    (h1
+      (button :type "button"
+              :click #(swap! show? not)
+              "Toggle twitter"))
+    (if-tpl (cell= (= show? true))
+            (a :id "twitter-timeline"
+               :class "twitter-timeline"
+               :href "https://twitter.com/twitterdev"
+               :data-widget-id "287095118299799553"
+               :charset "UTF-8" "twitter?")
+            (div "Showing something else"))))
+
