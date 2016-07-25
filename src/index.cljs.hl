@@ -2,20 +2,25 @@
 
 (defc show? true)
 
+;; embed code from https://publish.twitter.com
+;; also tried https://dev.twitter.com/web/embedded-timelines/user but had similar behaviour
+
+(defelem twitter []
+         (a :class "twitter-timeline"
+            :href "https://twitter.com/exicon"
+            :data-width "500"
+            :data-height "500"
+            "twitter?"))
+
 (html
   (head
     (link :href "app.css" :rel "stylesheet")
-    (script (str "!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+\"://platform.twitter.com/widgets.js\";fjs.parentNode.insertBefore(js,fjs);}}(document,\"script\",\"twitter-wjs\");")))
+    (script  :src "//platform.twitter.com/widgets.js" :charset "utf-8"))
   (body
     (h1
       (button :type "button"
               :click #(swap! show? not)
               "Toggle twitter"))
     (if-tpl (cell= (= show? true))
-            (a :id "twitter-timeline"
-               :class "twitter-timeline"
-               :href "https://twitter.com/twitterdev"
-               :data-widget-id "287095118299799553"
-               :charset "UTF-8" "twitter?")
+            (twitter)
             (div "Showing something else"))))
-

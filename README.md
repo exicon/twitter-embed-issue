@@ -19,10 +19,11 @@ A [Hoplon][3] project designed to...well, that part is up to you.
     - auto reload the html page on changes
     - Clojurescript REPL
 
-2. Go to [http://localhost:8000][2] in your browser. You should see "Hello, Hoplon!".
+2. Go to [http://localhost:8000][2] in your browser. You should see a twitter widget.
 
-3. If you edit and save a file, the task will recompile the code and reload the
-   browser to show the updated version.
+3. Click the button "Toggle twitter" to show different content.
+
+4. Click again to show the twitter widget but this time it does not display.
 
 ### Production
 1. Run the `prod` task. In a terminal run:
